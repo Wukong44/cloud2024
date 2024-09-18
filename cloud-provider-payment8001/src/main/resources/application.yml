@@ -1,10 +1,15 @@
 server:
   port: 8001
 
-# ==========applicationName + druid-mysql8 driver===================
 spring:
   application:
-    name: cloud-payment-service
+    name: cloud-provider-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+
+# ==========applicationName + druid-mysql8 driver===================
 
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
