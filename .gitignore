@@ -1,0 +1,2 @@
+# Ignore target directories in all subdirectories and at the root level
+/target/
