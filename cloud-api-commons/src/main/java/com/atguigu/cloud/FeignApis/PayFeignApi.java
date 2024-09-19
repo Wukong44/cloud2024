@@ -5,7 +5,8 @@ import com.atguigu.cloud.resp.ResultData;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(value = "cloud-provider-service")
+// @FeignClient(value = "cloud-provider-service")
+@FeignClient(value = "cloud-gateway")
 public interface PayFeignApi {
 
     @PostMapping("/pay/add")

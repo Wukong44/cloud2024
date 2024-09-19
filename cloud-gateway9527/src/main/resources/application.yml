@@ -1,0 +1,23 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway #以微服务注册进consul或nacos服务列表内
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: cloud-provider-service
+          uri: lb://cloud-provider-service
+          #          uri: http://localhost:8001
+          predicates:
+            - Path=/pay/**
+            - After=2024-09-19T13:59:44.309650400+08:00[Asia/Shanghai]
+#            #- Cookie=username,xsy
+#            #- Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式
+#            #- Host=**.atguigu.com
+#            #- Query=username, \d+  # 要有参数名username并且值还要是整数才能路由
+#            - RemoteAddr=192.168.124.1/24 # 外部访问我的IP限制，最大跨度不超过32，目前是1~24它们是 CIDR 表示法。

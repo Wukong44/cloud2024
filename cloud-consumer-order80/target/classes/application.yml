@@ -5,7 +5,6 @@ spring:
   application:
     name: cloud-consumer-service
   cloud:
-
     nacos:
       discovery:
         server-addr: localhost:8848
@@ -32,10 +31,10 @@ service-url:
   nacos-user-service: http://cloud-provider-service
 
 # feign日志以什么级别监控哪个接口
-logging:
-  level:
-    com:
-      atguigu:
-        cloud:
-          FeignApis:
-            PayFeignApi: debug
+#logging:
+#  level:
+#    com:
+#      atguigu:
+#        cloud:
+#          FeignApis:
+#            PayFeignApi: debug
