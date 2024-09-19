@@ -5,9 +5,37 @@ spring:
   application:
     name: cloud-consumer-service
   cloud:
+
     nacos:
       discovery:
         server-addr: localhost:8848
+
+    openfeign:
+      client:
+        config:
+          #          default: # 全局配置
+          #            #连接超时时间
+          #            connectTimeout: 3000
+          #            #读取超时时间
+          #            readTimeout: 3000
+          cloud-provider-service: # 指定微服务配置超时时间  和default同时存在时，单个配置将覆盖全局配置
+            #连接超时时间
+            connectTimeout: 3000
+            #读取超时时间
+            readTimeout: 3000
+      httpclient:
+        hc5:
+          enabled: true
+
   #消费者将要去访问的微服务名称(nacos微服务提供者叫什么你写什么)
 service-url:
   nacos-user-service: http://cloud-provider-service
+
+# feign日志以什么级别监控哪个接口
+#logging:
+#  level:
+#    com:
+#      atguigu:
+#        cloud:
+#          FeignApis:
+#            PayFeignApi: debug

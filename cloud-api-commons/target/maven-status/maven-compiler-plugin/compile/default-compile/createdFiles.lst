@@ -1,3 +1,4 @@
+com\atguigu\cloud\FeignApis\PayFeignApi.class
 com\atguigu\cloud\Main.class
 com\atguigu\cloud\resp\ReturnCodeEnum.class
 com\atguigu\cloud\entities\PayDTO.class

@@ -1,9 +1,11 @@
 package com.atguigu.cloud.controller;
 
+import cn.hutool.core.date.DateUtil;
 import com.atguigu.cloud.entities.Pay;
 import com.atguigu.cloud.entities.PayDTO;
 import com.atguigu.cloud.resp.ResultData;
 import com.atguigu.cloud.service.PayService;
+import com.mysql.cj.util.TimeUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
@@ -11,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/pay")
@@ -49,7 +53,7 @@ public class PayController {
     @Operation(summary = "按照ID查流水", description = "查询支付流水方法")
     public ResultData getPay(@PathVariable("id") Integer id) {
         if (id < 0) throw new RuntimeException("不能为负数id");
-        return ResultData.success(payService.getById(id) + "/n当前服务器端口号：" + serverPort);
+        return ResultData.success(payService.getById(id));
     }
 
     @GetMapping("/getAll")
@@ -57,6 +61,15 @@ public class PayController {
         return ResultData.success(payService.list());
     }
 
+    @GetMapping("/getPort")
+    public ResultData getPort() {
+        try {
+            TimeUnit.SECONDS.sleep(62);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return ResultData.success("当前服务端口" + serverPort);
+    }
 }
 
 
